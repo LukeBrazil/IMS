@@ -76,6 +76,28 @@ public class SqlCon {
 		myObj.close();
 	}
 	
+	public void deleteCustomer() {
+		Statement stmt = null;
+		Connection con = null;
+		SqlCon myCon = new SqlCon();
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("Please choose an customer by id to delete");
+		myCon.showAllCustomers();
+		int id = myObj.nextInt();
+		
+		try {
+			con = DriverManager.getConnection(url, username, password);
+			stmt = con.createStatement();
+			String query = "DELETE FROM Customers WHERE customer_id = " + id;
+			System.out.println(query);
+//			stmt.execute(query);
+			System.out.println("Deleted Customer!");
+			
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
+	
 	public String showItems() {
 		Statement stmt = null;
 		ResultSet rslt = null;
@@ -187,6 +209,87 @@ public class SqlCon {
 		} while(orderComplete == false);
 	}
 	
+	public void addItem() {
+		// INSERT INTO Customers(first_name, last_name, age) VALUES ('John', 'Mable',
+		// 19);
+		Statement stmt = null;
+		Connection con = null;
 
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("Enter Item Name: ");
+		String item_name = myObj.next();
+		
+		System.out.println("Enter Item Price: ");
+		int item_value = myObj.nextInt();
+		
+
+		try {
+			con = DriverManager.getConnection(url, username, password);
+			stmt = con.createStatement();
+			String query = "INSERT INTO Item(item_name, item_value) VALUES ('" + item_name + "', " + item_value + ")";
+			System.out.println(query);
+			stmt.execute(query);
+			System.out.println("Added Item!");
+		} catch (SQLException ex) {
+			ex.printStackTrace();
+		}
+		myObj.close();
+	}
+	
+	public void updateItem() {
+		Statement stmt = null;
+		Connection con = null;
+		SqlCon myCon = new SqlCon();
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("Please Choose New Item Name:");
+		String item_name = myObj.nextLine();
+		System.out.println(item_name);
+		System.out.println("Please Enter Item to Update by Id: ");
+		System.out.println(myCon.showItems());
+		int id = myObj.nextInt();
+		System.out.println("Please Enter Item Value: ");
+		int item_value = myObj.nextInt();
+		
+		
+		
+		try {
+			con = DriverManager.getConnection(url, username, password);
+			stmt = con.createStatement();
+			String query = "UPDATE Item SET item_name = " + "'" + item_name + "', item_value =" + item_value + " WHERE item_id = " + id;
+			System.out.println(query);
+			stmt.execute(query);
+			System.out.println("Updated Item!");
+			
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	public void deleteItem() {
+		Statement stmt = null;
+		Connection con = null;
+		SqlCon myCon = new SqlCon();
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("Please choose an item by id to delete");
+		System.out.println(myCon.showItems());
+		int id = myObj.nextInt();
+		
+		try {
+			con = DriverManager.getConnection(url, username, password);
+			stmt = con.createStatement();
+			String query = "DELETE FROM Item WHERE item_id = " + id;
+			System.out.println(query);
+			stmt.execute(query);
+			System.out.println("Deleted Item!");
+			
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
+
+	
+	
+	
 

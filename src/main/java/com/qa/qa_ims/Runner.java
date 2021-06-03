@@ -6,6 +6,14 @@ import com.qa.qa_ims.SqlCon;
 
 public class Runner {
 	
+	static void add() {
+		SqlCon myCon = new SqlCon();
+		//myCon.addItem();
+		//myCon.updateItem();
+		//myCon.deleteItem();
+		myCon.deleteCustomer();
+	}
+	
 	static void menuMessage() {
 		System.out.println("Welcome to the Inventory Managment System!");
 		System.out.println();
@@ -71,7 +79,7 @@ public class Runner {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		initiatePortal();
+		add();
 	}
 
 }
