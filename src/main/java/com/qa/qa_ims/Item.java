@@ -1,6 +1,6 @@
 package com.qa.qa_ims;
 
-public abstract class Item {
+public class Item {
 	
 	String name;
 	double value;

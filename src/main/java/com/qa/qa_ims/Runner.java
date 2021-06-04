@@ -31,6 +31,12 @@ public class Runner {
 		System.out.println();
 		System.out.println("F: Show All Orders.");
 		System.out.println();
+		System.out.println("G: Create New Item.");
+		System.out.println();
+		System.out.println("H: Update Item.");
+		System.out.println();
+		System.out.println("I: Delete Item.");
+		System.out.println();
 		System.out.println("G: Exit.");
 	}
 	
@@ -45,7 +51,17 @@ public class Runner {
 			option = Character.toUpperCase(chosenInput);
 			switch(option) {
 			case 'A':
-				myCon.addCustomer();
+				Scanner myObj = new Scanner(System.in);
+				System.out.println("Enter First Name: ");
+				String first_name = myObj.next();
+				System.out.println(first_name);
+				System.out.println("Enter Last Name: ");
+				String last_name = myObj.next();
+				System.out.println(last_name);
+				System.out.println("Enter Age: ");
+				int age = myObj.nextInt();
+				System.out.println(age);
+				myCon.addCustomer(first_name, last_name, age);
 				menuMessage();
 				break;
 			case 'B':
@@ -65,7 +81,19 @@ public class Runner {
 				menuMessage();
 				break;
 			case 'F':
-				myCon.showOrders();
+				System.out.println(myCon.showOrders());
+				menuMessage();
+				break;
+			case 'G':
+				myCon.addItem();
+				menuMessage();
+				break;
+			case 'H':
+				myCon.updateItem();
+				menuMessage();
+				break;
+			case 'I':
+				myCon.deleteItem();
 				menuMessage();
 				break;
 			default:
@@ -73,13 +101,15 @@ public class Runner {
 				menuMessage();
 				break;
 			}
-		} while(option != 'G');
+		} while(option != 'M');
 		System.out.println("Thank you for using the inventory managment system!");
+		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		add();
+		//add();
+		initiatePortal();
 	}
 
 }

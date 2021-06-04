@@ -44,22 +44,13 @@ public class SqlCon {
 		}
 	}
 
-	public void addCustomer() {
+	public String addCustomer(String first_name, String last_name, int age) {
 		// INSERT INTO Customers(first_name, last_name, age) VALUES ('John', 'Mable',
 		// 19);
 		Statement stmt = null;
 		Connection con = null;
-
-		Scanner myObj = new Scanner(System.in);
-		System.out.println("Enter First Name: ");
-		String first_name = myObj.next();
-		System.out.println(first_name);
-		System.out.println("Enter Last Name: ");
-		String last_name = myObj.next();
-		System.out.println(last_name);
-		System.out.println("Enter Age: ");
-		int age = myObj.nextInt();
-		System.out.println(age);
+		String response = null;
+		
 		
 		Customer newCustomer = new Customer(first_name, last_name, age);
 
@@ -68,12 +59,13 @@ public class SqlCon {
 			stmt = con.createStatement();
 			String query = "INSERT INTO Customers(first_name, last_name, age) VALUES(\'" + newCustomer.getFirst_name() + "\', '"
 					+ newCustomer.getLast_name() + "\', " + newCustomer.getAge() + ")";
-			stmt.execute(query);
-			System.out.println("Added Cusomter!");
+			System.out.println(query);
+//			stmt.execute(query);
+			response = "Added Customer!";
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		myObj.close();
+		return response;
 	}
 	
 	public void deleteCustomer() {
@@ -178,6 +170,7 @@ public class SqlCon {
 		Scanner myObj = new Scanner(System.in);
 		char option = '\0';
 		
+		
 		do {
 			Statement stmt = null;
 			Connection con = null;
@@ -210,8 +203,7 @@ public class SqlCon {
 	}
 	
 	public void addItem() {
-		// INSERT INTO Customers(first_name, last_name, age) VALUES ('John', 'Mable',
-		// 19);
+
 		Statement stmt = null;
 		Connection con = null;
 
