@@ -90,7 +90,7 @@ public class SqlCon {
 		}
 	}
 	
-	public String showItems() {
+	public void showItems() {
 		Statement stmt = null;
 		ResultSet rslt = null;
 		Connection con = null;
@@ -110,7 +110,7 @@ public class SqlCon {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return response;
+		System.out.println(response);
 	}
 	
 	public void createOrder() {
@@ -178,7 +178,7 @@ public class SqlCon {
 			myCon.showOrders();
 			int orderChosen = myObj.nextInt();
 			System.out.println("Please Choose an item by id to add to the order.");
-			System.out.println(myCon.showItems());
+			myCon.showItems();
 			int itemChosen = myObj.nextInt();
 			
 			try {
@@ -192,7 +192,6 @@ public class SqlCon {
 				option = Character.toUpperCase(chosenDecision);
 				if (option == 'N') {
 					orderComplete = true;
-					//myObj.close();
 					break;
 				}
 				
@@ -233,11 +232,11 @@ public class SqlCon {
 		Connection con = null;
 		SqlCon myCon = new SqlCon();
 		Scanner myObj = new Scanner(System.in);
-		System.out.println("Please Choose New Item Name:");
+		System.out.println("Please Choose New Istem Name:");
 		String item_name = myObj.nextLine();
 		System.out.println(item_name);
 		System.out.println("Please Enter Item to Update by Id: ");
-		System.out.println(myCon.showItems());
+		myCon.showItems();
 		int id = myObj.nextInt();
 		System.out.println("Please Enter Item Value: ");
 		int item_value = myObj.nextInt();
@@ -264,7 +263,7 @@ public class SqlCon {
 		SqlCon myCon = new SqlCon();
 		Scanner myObj = new Scanner(System.in);
 		System.out.println("Please choose an item by id to delete");
-		System.out.println(myCon.showItems());
+		myCon.showItems();
 		int id = myObj.nextInt();
 		
 		try {
@@ -302,8 +301,6 @@ public class SqlCon {
 			con = DriverManager.getConnection(url, username, password);
 			stmt = con.createStatement();
 			String query = "UPDATE Customers SET first_name = " + "'" + first_name + "', last_name = " + "'" + last_name + "', age =  " + age + " WHERE customer_id = " + id;
-			// "INSERT INTO Customers(first_name, last_name, age) VALUES(\'" + newCustomer.getFirst_name() + "\', '"
-			//+ newCustomer.getLast_name() + "\', " + newCustomer.getAge() + ")"
 			System.out.println(query);
 			stmt.execute(query);
 			System.out.println("Updated Item!");

@@ -6,14 +6,6 @@ import com.qa.qa_ims.SqlCon;
 
 public class Runner {
 	
-	static void add() {
-		SqlCon myCon = new SqlCon();
-		//myCon.addItem();
-		//myCon.updateItem();
-		//myCon.deleteItem();
-		//myCon.deleteCustomer();
-		myCon.updateCustomer();
-	}
 	
 	static void menuMessage() {
 		System.out.println("Welcome to the Inventory Managment System!");
@@ -112,7 +104,7 @@ public class Runner {
 				break;
 			
 			default:
-				System.out.println("Please Choose a valid option: A, B, C, D, E, or F.");
+				System.out.println("Please Choose a valid option: A, B, C, D, E, F, G, H, I, J, K.");
 				menuMessage();
 				break;
 			}
@@ -123,7 +115,6 @@ public class Runner {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		//add();
 		initiatePortal();
 	}
 
