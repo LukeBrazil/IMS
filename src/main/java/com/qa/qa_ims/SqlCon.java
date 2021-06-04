@@ -82,7 +82,7 @@ public class SqlCon {
 			stmt = con.createStatement();
 			String query = "DELETE FROM Customers WHERE customer_id = " + id;
 			System.out.println(query);
-//			stmt.execute(query);
+			stmt.execute(query);
 			System.out.println("Deleted Customer!");
 			
 		} catch(SQLException ex) {

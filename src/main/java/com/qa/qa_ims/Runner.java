@@ -24,20 +24,25 @@ public class Runner {
 		System.out.println();
 		System.out.println("B: Show All Customers.");
 		System.out.println();
-		System.out.println("C: Show All Items.");
+		System.out.println("C: Update Customer.");
 		System.out.println();
-		System.out.println("D: Create New Order.");
+		System.out.println("D: Delete Customer.");
 		System.out.println();
-		System.out.println("E: Add Item to Order.");
+		System.out.println("E: Show All Items.");
 		System.out.println();
-		System.out.println("F: Show All Orders.");
+		System.out.println("F: Create New Item.");
 		System.out.println();
-		System.out.println("G: Create New Item.");
+		System.out.println("G: Update Item.");
 		System.out.println();
-		System.out.println("H: Update Item.");
+		System.out.println("H: Delete Item.");
 		System.out.println();
-		System.out.println("I: Delete Item.");
+		System.out.println("I: Create New Order.");
 		System.out.println();
+		System.out.println("J: Add Item to Order.");
+		System.out.println();
+		System.out.println("K: Show All Orders.");
+		System.out.println();
+		
 		System.out.println("M: Exit.");
 	}
 	
@@ -70,33 +75,42 @@ public class Runner {
 				menuMessage();
 				break;
 			case 'C':
-				myCon.showItems();
+				myCon.updateCustomer();
 				menuMessage();
 				break;
 			case 'D':
-				myCon.createOrder();
+				myCon.deleteCustomer();
 				menuMessage();
 				break;
 			case 'E':
-				myCon.addItemsToOrder();
+				myCon.showItems();
 				menuMessage();
 				break;
 			case 'F':
-				myCon.showOrders();
-				menuMessage();
-				break;
-			case 'G':
 				myCon.addItem();
 				menuMessage();
 				break;
-			case 'H':
+			case 'G':
 				myCon.updateItem();
 				menuMessage();
 				break;
-			case 'I':
+			case 'H':
 				myCon.deleteItem();
 				menuMessage();
 				break;
+			case 'I':
+				myCon.createOrder();
+				menuMessage();
+				break;
+			case 'J':
+				myCon.addItemsToOrder();
+				menuMessage();
+				break;
+			case 'K':
+				myCon.showOrders();
+				menuMessage();
+				break;
+			
 			default:
 				System.out.println("Please Choose a valid option: A, B, C, D, E, or F.");
 				menuMessage();
