@@ -11,7 +11,8 @@ public class Runner {
 		//myCon.addItem();
 		//myCon.updateItem();
 		//myCon.deleteItem();
-		myCon.deleteCustomer();
+		//myCon.deleteCustomer();
+		myCon.updateCustomer();
 	}
 	
 	static void menuMessage() {
@@ -69,7 +70,7 @@ public class Runner {
 				menuMessage();
 				break;
 			case 'C':
-				System.out.println(myCon.showItems());
+				myCon.showItems();
 				menuMessage();
 				break;
 			case 'D':

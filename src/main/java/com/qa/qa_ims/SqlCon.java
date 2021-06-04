@@ -279,6 +279,40 @@ public class SqlCon {
 			ex.printStackTrace();
 		}
 	}
+	
+	public void updateCustomer() {
+		Statement stmt = null;
+		Connection con = null;
+		SqlCon myCon = new SqlCon();
+		Scanner myObj = new Scanner(System.in);
+		System.out.println("Please a Customer By ID to update:");
+		myCon.showAllCustomers();
+		int id = myObj.nextInt();
+		System.out.println("Please First Name for Customer: ");
+		String first_name = myObj.next();
+		System.out.println("Please Enter Last Name for Customer: ");
+		String last_name = myObj.next();
+		System.out.println("Please Enter Age for Customer: ");
+		int age = myObj.nextInt();
+
+		
+		
+		
+		try {
+			con = DriverManager.getConnection(url, username, password);
+			stmt = con.createStatement();
+			String query = "UPDATE Customers SET first_name = " + "'" + first_name + "', last_name = " + "'" + last_name + "', age =  " + age + " WHERE customer_id = " + id;
+			// "INSERT INTO Customers(first_name, last_name, age) VALUES(\'" + newCustomer.getFirst_name() + "\', '"
+			//+ newCustomer.getLast_name() + "\', " + newCustomer.getAge() + ")"
+			System.out.println(query);
+			stmt.execute(query);
+			System.out.println("Updated Item!");
+			
+		} catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+		
+	}
 }
 
 	
