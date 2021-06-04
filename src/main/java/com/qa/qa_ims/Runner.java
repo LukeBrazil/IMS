@@ -37,7 +37,7 @@ public class Runner {
 		System.out.println();
 		System.out.println("I: Delete Item.");
 		System.out.println();
-		System.out.println("G: Exit.");
+		System.out.println("M: Exit.");
 	}
 	
 	static void initiatePortal() {
@@ -81,7 +81,7 @@ public class Runner {
 				menuMessage();
 				break;
 			case 'F':
-				System.out.println(myCon.showOrders());
+				myCon.showOrders();
 				menuMessage();
 				break;
 			case 'G':

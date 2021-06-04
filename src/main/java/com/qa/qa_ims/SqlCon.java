@@ -60,7 +60,7 @@ public class SqlCon {
 			String query = "INSERT INTO Customers(first_name, last_name, age) VALUES(\'" + newCustomer.getFirst_name() + "\', '"
 					+ newCustomer.getLast_name() + "\', " + newCustomer.getAge() + ")";
 			System.out.println(query);
-//			stmt.execute(query);
+			stmt.execute(query);
 			response = "Added Customer!";
 		} catch (SQLException ex) {
 			ex.printStackTrace();
@@ -134,10 +134,10 @@ public class SqlCon {
 		} catch (SQLException ex) { 
 			ex.printStackTrace();
 		}
-		myObj.close();
+		//myObj.close();
 	}
 	
-	public String showOrders() {
+	public void showOrders() {
 		Statement stmt = null;
 		ResultSet rslt = null;
 		Connection con = null;
@@ -155,12 +155,12 @@ public class SqlCon {
 				String last_name = rslt.getString("last_name");
 				int customer_id = rslt.getInt("fk_customer_id");
 				response += "Order Id: " + order_id + " first_name: " + first_name + " last_name: " + last_name + " customer_id " + customer_id + "\n";
-		
+				
 			}
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		return response;
+		System.out.println(response);
 	}
 	
 	public void addItemsToOrder() {
@@ -178,7 +178,7 @@ public class SqlCon {
 			myCon.showOrders();
 			int orderChosen = myObj.nextInt();
 			System.out.println("Please Choose an item by id to add to the order.");
-			myCon.showItems();
+			System.out.println(myCon.showItems());
 			int itemChosen = myObj.nextInt();
 			
 			try {
@@ -192,7 +192,7 @@ public class SqlCon {
 				option = Character.toUpperCase(chosenDecision);
 				if (option == 'N') {
 					orderComplete = true;
-					myObj.close();
+					//myObj.close();
 					break;
 				}
 				
@@ -225,7 +225,7 @@ public class SqlCon {
 		} catch (SQLException ex) {
 			ex.printStackTrace();
 		}
-		myObj.close();
+		//myObj.close();
 	}
 	
 	public void updateItem() {
